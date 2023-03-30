@@ -1,4 +1,4 @@
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
@@ -53,6 +53,13 @@ export function Cadastro() {
       });
   }
 
+  const showPassword = () => {
+    var p = document.getElementById("password");
+    if (p.type === "password") {
+      p.type = "text";
+    } else p.type = "password";
+  };
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -82,12 +89,17 @@ export function Cadastro() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
-            placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
-          />
+          <InputGroup>
+            <Form.Control
+              type="password"
+              className={errors.senha && "is-invalid"}
+              placeholder="Sua senha"
+              {...register("senha", { required: "A senha é obrigatória" })}
+            />
+            <InputGroup.Text>
+              <i class="bi bi-eye-fill" onClick={showPassword}></i>
+            </InputGroup.Text>
+          </InputGroup>
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
