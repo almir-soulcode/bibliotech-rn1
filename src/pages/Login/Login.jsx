@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -16,6 +16,13 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+
+  const showPassword = () => {
+    var p = document.getElementById("password");
+    if (p.type === "password") {
+      p.type = "text";
+    } else p.type = "password";
+  };
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -88,12 +95,18 @@ export function Login() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="senha">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Sua senha"
-            className={errors.senha ? "is-invalid" : ""}
-            {...register("senha", { required: "Senha é obrigatória" })}
-          />
+          <InputGroup>
+            <Form.Control
+              type="password"
+              id="password"
+              placeholder={`Sua senha `}
+              className={errors.senha ? "is-invalid" : ""}
+              {...register("senha", { required: "Senha é obrigatória" })}
+            />
+            <InputGroup.Text>
+              <i class="bi bi-eye-fill" onClick={showPassword}></i>
+            </InputGroup.Text>
+          </InputGroup>
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
