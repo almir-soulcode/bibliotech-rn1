@@ -1,0 +1,10 @@
+.accordion {
+    max-width: 800px; 
+    width: 800px;
+    margin: 0 auto;
+}
+
+.carousel {
+    max-width: 100%; /* definir a largura máxima para o carousel */
+    margin: 0 auto; /* centralizar horizontalmente */
+}
