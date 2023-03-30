@@ -1,17 +1,19 @@
-import { initializeApp } from "firebase/app";
+
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Chaves de acesso ao firebase
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCGV-hKd1DwX0wKcmlJV65SF1V2m1Bo9eY",
-  authDomain: "bibliotech-aulas-241dd.firebaseapp.com",
-  projectId: "bibliotech-aulas-241dd",
-  storageBucket: "bibliotech-aulas-241dd.appspot.com",
-  messagingSenderId: "455282911729",
-  appId: "1:455282911729:web:37e3cca50849ce62b73c50",
+  apiKey: "AIzaSyCxJoto6ifTPmTEjPAZmflFhbcQsCmeWcQ",
+  authDomain: "bibliotech-ja.firebaseapp.com",
+  projectId: "bibliotech-ja",
+  storageBucket: "bibliotech-ja.appspot.com",
+  messagingSenderId: "174756742189",
+  appId: "1:174756742189:web:b9f6f471e86b1c37bfe4a4"
 };
+
 
 // Inicializa o app com base nas configurações acima
 export const app = initializeApp(firebaseConfig);
