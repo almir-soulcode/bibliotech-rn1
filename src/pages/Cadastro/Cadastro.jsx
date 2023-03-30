@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function Cadastro() {
+  const [hidePass, setHidePass] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -53,13 +56,6 @@ export function Cadastro() {
       });
   }
 
-  const showPassword = () => {
-    var p = document.getElementById("password");
-    if (p.type === "password") {
-      p.type = "text";
-    } else p.type = "password";
-  };
-
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -91,18 +87,21 @@ export function Cadastro() {
           <Form.Label>Senha</Form.Label>
           <InputGroup>
             <Form.Control
-              type="password"
+              type={hidePass ? "password" : "text"}
               className={errors.senha && "is-invalid"}
               placeholder="Sua senha"
               {...register("senha", { required: "A senha é obrigatória" })}
             />
             <InputGroup.Text>
-              <i class="bi bi-eye-fill" onClick={showPassword}></i>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
             </InputGroup.Text>
+            <Form.Text className="invalid-feedback">
+              {errors.senha?.message}
+            </Form.Text>
           </InputGroup>
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
         </Form.Group>
         <Button type="submit" variant="success">
           Cadastrar

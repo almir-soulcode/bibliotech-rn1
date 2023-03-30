@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -9,6 +9,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
 
 export function Login() {
+  const [hidePass, setHidePass] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -16,13 +18,6 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
-
-  const showPassword = () => {
-    var p = document.getElementById("password");
-    if (p.type === "password") {
-      p.type = "text";
-    } else p.type = "password";
-  };
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -97,19 +92,22 @@ export function Login() {
           <Form.Label>Senha</Form.Label>
           <InputGroup>
             <Form.Control
-              type="password"
+              type={hidePass ? "password" : "text"}
               id="password"
               placeholder={`Sua senha `}
               className={errors.senha ? "is-invalid" : ""}
               {...register("senha", { required: "Senha é obrigatória" })}
             />
             <InputGroup.Text>
-              <i class="bi bi-eye-fill" onClick={showPassword}></i>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
             </InputGroup.Text>
+            <Form.Text className="invalid-feedback">
+              {errors.senha?.message}
+            </Form.Text>
           </InputGroup>
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
         </Form.Group>
         <Button type="submit" variant="success">
           Entrar
