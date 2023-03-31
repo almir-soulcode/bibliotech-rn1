@@ -19,7 +19,7 @@ export function RecuperarSenha() {
             sendPasswordResetEmail(auth, email).then(() => {
                 toast.success(`Email enviado para ${email}`, {position: "top-right", duration: 3500});
             }).catch((error) => {
-                toast.error(`Email não cadastrado, tente novamente`, {position: "top-right", duration: 4000})
+                toast.error(`Email não cadastrado. Tente novamente`, {position: "top-right", duration: 4000})
             });
         } else {
             toast.error(`Os emails não correspondem`, {position: "top-right", duration: 3500})
