@@ -7,7 +7,7 @@ $success: rgb(54, 148, 68);
 $body-bg: #ffffff;
 
 // cor das letras
-$body-color: #0f0a0a;
+$body-color: #000000;
 
 
 
@@ -15,5 +15,5 @@ $body-color: #0f0a0a;
 
 
 
-
+// esse import tem que ficar no final do código para funcionar
 @import "../node_modules/bootstrap/scss/bootstrap";
