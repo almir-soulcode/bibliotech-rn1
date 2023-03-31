@@ -15,6 +15,7 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
+import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -49,6 +50,7 @@ export function App() {
             </Route>
             
             <Route path="/login" element={<Login />} />
+            <Route path="/login/recuperar" element={<RecuperarSenha />} />
             <Route path="/cadastro" element={<Cadastro />} />
 
           </Routes>

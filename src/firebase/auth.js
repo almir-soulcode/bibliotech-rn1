@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -37,4 +38,8 @@ export async function loginEmailSenha(email, senha) {
 export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
+}
+
+export async function RecSenha(email) {
+  await sendPasswordResetEmail(auth, email);
 }

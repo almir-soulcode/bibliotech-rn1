@@ -109,6 +109,9 @@ export function Login() {
             </Form.Text>
           </InputGroup>
         </Form.Group>
+        <p className="text-muted">
+        <Link to="/login/recuperar">Esqueci minha senha</Link>
+        </p>
         <Button type="submit" variant="success">
           Entrar
         </Button>
