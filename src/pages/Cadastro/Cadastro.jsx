@@ -1,13 +1,13 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
-import { useNavigate, Route } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 
 export function Cadastro() {
@@ -19,6 +19,8 @@ export function Cadastro() {
   } = useForm();
 
   const navigate = useNavigate();
+  const [visivel, setVisivel] = useState(false);
+
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -57,13 +59,6 @@ export function Cadastro() {
       });
   }
 
-  const usuarioLogado = useContext(AuthContext);
-
-  if (usuarioLogado !== null) {
-
-    return <Navigate to="/" />;
-  }
-
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -93,12 +88,23 @@ export function Cadastro() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
-            placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
-          />
+
+          <div className="d-flex">
+            <Form.Control
+              type={visivel ? "text" : "password"} className={errors.senha && "is-invalid"}
+              placeholder="Sua senha"
+              {...register("senha", { required: "A senha é obrigatória" })}
+            />
+
+            <Button
+              variant="success"
+              className="senhaOculta"
+              onClick={() => setVisivel(!visivel)}>
+              {visivel ? <AiOutlineEye />
+                : <AiOutlineEyeInvisible />}
+            </Button>{' '}
+          </div>
+
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
