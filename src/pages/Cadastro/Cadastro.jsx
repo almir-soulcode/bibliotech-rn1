@@ -1,13 +1,17 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Route } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 export function Cadastro() {
+
   const {
     register,
     handleSubmit,
@@ -51,6 +55,13 @@ export function Cadastro() {
           duration: 2500,
         });
       });
+  }
+
+  const usuarioLogado = useContext(AuthContext);
+
+  if (usuarioLogado !== null) {
+
+    return <Navigate to="/" />;
   }
 
   return (
