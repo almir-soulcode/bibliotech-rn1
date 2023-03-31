@@ -7,6 +7,9 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
 
 export function Login() {
   const {
@@ -16,6 +19,8 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+  const [visivel, setVisivel] = useState(false);
+
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -88,12 +93,22 @@ export function Login() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="senha">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Sua senha"
-            className={errors.senha ? "is-invalid" : ""}
-            {...register("senha", { required: "Senha é obrigatória" })}
-          />
+          <div className="d-flex">
+            <Form.Control
+              type={visivel ? "text" : "password"} className={errors.senha && "is-invalid"}
+              placeholder="Sua senha"
+              {...register("senha", { required: "A senha é obrigatória" })}
+            />
+
+            <Button
+              variant="success"
+              className="p-2"
+              onClick={() => setVisivel(!visivel)}>
+              {visivel ? <AiOutlineEye />
+                : <AiOutlineEyeInvisible />}
+            </Button>
+          </div>
+
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
