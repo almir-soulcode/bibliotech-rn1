@@ -38,3 +38,5 @@ export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
 }
+
+
