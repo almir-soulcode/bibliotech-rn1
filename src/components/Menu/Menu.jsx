@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
+import { Avatar } from "../Avatar/Avatar"
 
 export function Menu() {
   const navigate = useNavigate();
@@ -37,6 +38,9 @@ export function Menu() {
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
           </Nav>
+          <div className="d-flex justify-content-center align-items-center">
+            <Avatar size="2" color="light"/>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -4,6 +4,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  getAuth,
+  onAuthStateChanged
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -37,4 +39,8 @@ export async function loginEmailSenha(email, senha) {
 export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
+}
+
+export function getUser(){
+  return getAuth().currentUser;
 }
