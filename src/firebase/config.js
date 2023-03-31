@@ -12,7 +12,6 @@ const firebaseConfig = {
   messagingSenderId: "170013510651",
   appId: "1:170013510651:web:b286dc51d54818a6f8195e"
 };
-
 // Inicializa o app com base nas configurações acima
 export const app = initializeApp(firebaseConfig);
 // Configurando o Authentication e seus recursos login/cadastro

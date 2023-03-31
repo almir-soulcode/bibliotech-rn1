@@ -3,8 +3,17 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
+
 
 export function Menu() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const navigate = useNavigate();
 
   function onLogout() {
@@ -14,7 +23,17 @@ export function Menu() {
   }
 
   return (
-    <Navbar bg="success" variant="light" expand="lg">
+
+  <Navbar bg="success" variant="light" expand="lg">
+      <Button variant="success" onClick={handleShow}>
+      Menu
+    </Button>
+
+    <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title>Menu</Offcanvas.Title>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -22,7 +41,7 @@ export function Menu() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse>
+        
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">
               Home
@@ -37,8 +56,11 @@ export function Menu() {
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
           </Nav>
-        </Navbar.Collapse>
+        
       </Container>
+      </Offcanvas.Body>
+    </Offcanvas>
     </Navbar>
+
   );
 }
