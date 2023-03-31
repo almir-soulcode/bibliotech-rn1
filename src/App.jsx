@@ -16,26 +16,34 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { NotFound } from './pages/NotFound/NotFound';
 import { Reportar } from "./pages/Reportar/Reportar";
+import { ThemeContext } from "./contexts/ThemeContexts";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
 
   useEffect(() => {
-    // Monitorar/detectar o usuário conectado
-    // Fica sabendo quando loga/desloga
+
     onAuthStateChanged(auth, (user) => {
-      // user é nulo = deslogado
-      // user tem objeto = logado
+
       setUsuarioLogado(user);
     });
 
-    // Esse efeito irá rodar apenas uma vez
-    // Quando o App for renderizado/inicializado
   }, []);
+
+  const [temaEscuro, setTemaEscuro] = useState(false);
+
+  function alternar() {
+    if (temaEscuro === true) {
+      setTemaEscuro(false)
+    } else {
+      setTemaEscuro(true)
+    }
+  }
 
   return (
     <>
       <AuthContext.Provider value={usuarioLogado}>
+      <ThemeContext.Provider value={{ temaEscuro: temaEscuro, alternar: alternar }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Root />}>
@@ -53,6 +61,7 @@ export function App() {
             <Route path="/reportar" element={<Reportar />} />
           </Routes>
         </BrowserRouter>
+        </ThemeContext.Provider>
       </AuthContext.Provider>
       <Toaster />
     </>
