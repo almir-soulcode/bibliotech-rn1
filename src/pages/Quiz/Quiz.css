@@ -1,0 +1,55 @@
+.qcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #74cfe8;
+  text-align: center;
+}
+  .qquiz{
+    background-color: #fff;
+    max-width: 800px;
+    padding: 50px 100px;
+    border: 2px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .qinforPerguntas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+  }
+  
+  .qcontagemPerguntas, .qpontuacao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+  
+  .qpergunta {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    
+  }
+  
+  .qgrupoResposta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .qgrupoResposta span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+ 

@@ -4,13 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // Chaves de acesso ao firebase
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCGV-hKd1DwX0wKcmlJV65SF1V2m1Bo9eY",
-  authDomain: "bibliotech-aulas-241dd.firebaseapp.com",
-  projectId: "bibliotech-aulas-241dd",
-  storageBucket: "bibliotech-aulas-241dd.appspot.com",
-  messagingSenderId: "455282911729",
-  appId: "1:455282911729:web:37e3cca50849ce62b73c50",
+  apiKey: "AIzaSyDSnmmrLqN_pT7bYtayxLoNLu6Ru_FlVc4",
+  authDomain: "bibliotech-7.firebaseapp.com",
+  projectId: "bibliotech-7",
+  storageBucket: "bibliotech-7.appspot.com",
+  messagingSenderId: "603283426456",
+  appId: "1:603283426456:web:f0cfc95c88a3c8605354ed"
 };
 
 // Inicializa o app com base nas configurações acima

@@ -1,0 +1,15 @@
+.ChatBody {
+    flex: 1;
+    background-color: #efeae2;
+    overflow-y: auto;
+}
+
+.ChatBody ::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+}
+
+.ChatBody ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

@@ -17,16 +17,18 @@ export function AdicionarEmprestimo() {
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
-            let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date()};
+            let novoEmprestimo = { ...data, status: "Pendente", livro, dataEmprestimo: new Date() };
             adicionarEmprestimo(novoEmprestimo).then(() => {
                 toast.success("Empréstimo adicionado com sucesso!", { duration: 2000, position: "bottom-right" })
                 navigate("/emprestimos");
             })
         })
-
     }
 
     useEffect(() => {
+        const campoDataHora = document.querySelector('#entrada-hora'); //ele deve pega o campo hora e data
+        const dataHoraAtual = new Date().toISOString().slice(0, 16); 
+        campoDataHora.setAttribute('min', dataHoraAtual);
         getLivros().then(busca => {
             setLivros(busca);
         });
@@ -68,7 +70,26 @@ export function AdicionarEmprestimo() {
                             {errors.idLivro?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Emprestar</Button>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label>Data de entrega</Form.Label>
+                        <Form.Control
+                            type="datetime-local"
+                            id="entrada-hora"
+                            name="dataEntrega"
+                            required
+                            className={errors.dataEntrega && "is-invalid"}
+                            {...register("dataEntrega", {
+                                required: "A data de entrega é obrigatória!",
+                                maxLength: { value: 255, message: "Limite de 255 caracteres!" },
+                            })}
+                        />
+                        <Form.Text className="invalid-feedback">
+                            {errors.dataEntrega?.message}
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Button type="submit" variant="primary" id="btn-custom">Emprestar</Button>
                 </Form>
             </Container>
         </div>

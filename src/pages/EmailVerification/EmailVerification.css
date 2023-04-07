@@ -1,0 +1,26 @@
+.verificacao {
+    position: relative;
+    /* margin: 5em auto;  	  	 */
+    text-align: center;
+    padding: 20px;
+}
+
+.titulo-2 {
+    margin-top: 20px;
+    padding: 50px;
+    font-family: serif;
+    color: dark;
+}
+
+.titulo-5 {
+    padding: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+.verificacao-email {
+    background-image: url('https://5357741.fs1.hubspotusercontent-na1.net/hubfs/5357741/Library_Featured_Image_Subheader-2-V2%20%281%29.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }

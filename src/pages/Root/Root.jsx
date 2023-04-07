@@ -11,7 +11,13 @@ export function Root() {
   if (usuarioLogado === null) {
     // se está deslogado
     // redireciona para a página de login
-    return <Navigate to="/login" />;
+    return  <Navigate to="/login" />;
+  }
+
+  if (!usuarioLogado.emailVerified) {
+    // se o email não está verificado
+    // redireciona para a página de verificação
+    return <Navigate to="/verificacao-email" />;
   }
 
   return (

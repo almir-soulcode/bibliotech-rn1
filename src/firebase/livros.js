@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { livrosCollection } from "./collections";
-import { storage } from "./config"
+import { storage } from "./config" 
 
 export async function addLivro(data) {
     await addDoc(livrosCollection, data);

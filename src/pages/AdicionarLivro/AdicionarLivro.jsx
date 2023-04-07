@@ -70,7 +70,7 @@ export function AdicionarLivro() {
                         <Form.Label>Imagem da capa</Form.Label>
                         <Form.Control type="file" accept=".png,.jpg,.jpeg,.gif" {...register("imagem")} />
                     </Form.Group>
-                    <Button type="submit" variant="success">Adicionar</Button>
+                    <Button type="submit" variant="success" id="btn-custom">Adicionar</Button>
                 </Form>
             </Container>
         </div>

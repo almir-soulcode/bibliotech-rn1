@@ -1,0 +1,26 @@
+.DefaultChat {
+    width: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.DefaultChat svg {
+    width: 100px;
+    height: 100px;
+    color: green;
+}
+
+#TitleDefault {
+    text-align: center;
+}
+
+#InfoDefault {
+    font-size: 18px;
+    text-align: center;
+    max-width: 500px;
+}

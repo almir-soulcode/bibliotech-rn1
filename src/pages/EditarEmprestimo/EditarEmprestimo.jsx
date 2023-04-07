@@ -83,7 +83,7 @@ export function EditarEmprestimo() {
                             {errors.status?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Editar</Button>
+                    <Button type="submit" variant="success" id="btn-custom">Editar</Button>
                 </Form>
             </Container>
         </div>

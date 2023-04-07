@@ -4,4 +4,17 @@ td {
 
 td img {
     height: 200px;
+    
 }
+
+#inputBusca::placeholder {
+    /* Define a posição e o tamanho do ícone */
+    background-position: 190px;
+    background-size: 20px 20px;
+    /* Define a imagem do ícone */
+    background-image: url("https://cdn-icons-png.flaticon.com/512/79/79558.png");
+    /* Define a cor do texto do placeholder */
+    color: #999;
+    background-repeat: no-repeat;
+    
+  }

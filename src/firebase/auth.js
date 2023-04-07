@@ -1,9 +1,13 @@
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  sendPasswordResetEmail,
+  confirmPasswordReset,  
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -27,6 +31,20 @@ export async function loginGoogle() {
   return resultado.user;
 }
 
+export async function loginGitHub() {
+  const provider = new GithubAuthProvider();
+  const resultado = await signInWithPopup(auth, provider);
+
+  return resultado.user;
+}
+
+export async function loginFacebook() {
+  const provider = new FacebookAuthProvider();
+  const resultado = await signInWithPopup(auth, provider);
+
+  return resultado.user;
+}
+
 export async function loginEmailSenha(email, senha) {
   // Vai realizar o login com uma conta de email já existente
   const resultado = await signInWithEmailAndPassword(auth, email, senha);
@@ -38,3 +56,13 @@ export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
 }
+
+
+//para resetar senha
+export async function esqueciMinhaSenha(email) {
+      
+    await sendPasswordResetEmail(auth, email);
+    
+}
+// your code goes here
+
